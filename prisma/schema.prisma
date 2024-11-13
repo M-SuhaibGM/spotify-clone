@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model new_table {
+  id    Int    @id @default(autoincrement())
+  pic   String @db.VarChar(255)
+  song  String @db.VarChar(445)
+  title String @db.VarChar(255)
+  desc  String @db.VarChar(255)
+}
+
+model liked {
+  id     Int @id @default(autoincrement())
+  songid Int @unique(map: "songid_UNIQUE")
+}
